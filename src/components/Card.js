@@ -4,7 +4,9 @@ const Card = (props) => {
 	const [fliped, setFliped] = useState(false);
 
 	const handleClick = (e) => {
-		setFliped((prevState) => !prevState);
+		if (props.handleClick(props.id)) {
+			setFliped((prevState) => !prevState);
+		}
 	};
 
 	return (
