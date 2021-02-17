@@ -20,10 +20,17 @@ function App() {
 		} else if (!cards.current.secondCard) {
 			cards.current.secondCard = card;
 			console.log(cards.current);
-			setTimeout(() => {
-				cards.current.firstCard.element.classList.remove('flip');
-				cards.current.secondCard.element.classList.remove('flip');
-			}, 1000);
+			if (cards.current.firstCard.url === cards.current.secondCard.url) {
+				cards.current.firstCard = null;
+				cards.current.secondCard = null;
+			} else {
+				setTimeout(() => {
+					cards.current.firstCard.element.classList.remove('flip');
+					cards.current.secondCard.element.classList.remove('flip');
+					cards.current.firstCard = null;
+					cards.current.secondCard = null;
+				}, 1000);
+			}
 			return true;
 		}
 		return false;

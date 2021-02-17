@@ -6,10 +6,9 @@ const Card = (props) => {
 			props.handleClick({
 				id: props.id,
 				element: e.target.parentElement.parentElement,
+				url: props.url,
 			})
 		) {
-			console.log(e.target.parentElement.parentElement);
-			console.log(e.target);
 			e.target.parentElement.parentElement.classList.add('flip');
 		}
 	};
