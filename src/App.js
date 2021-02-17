@@ -9,8 +9,10 @@ function App() {
 
 	const [moves, setMoves] = useState(0);
 	const [cardComponents, setCardComponents] = useState([]);
-	let [playAgain, setPlayAgain] = useState(true);
-	let imgUrls = [1, 2, 3];
+	const [playAgain, setPlayAgain] = useState(true);
+	const [bestScore, setBestScore] = useState(null);
+	const [gameOver, setGameOver] = useState(false);
+	let imgUrls = useRef(['1', '2']);
 
 	const handleClick = (card) => {
 		if (card.element.classList.value === 'flip-card-container') {
@@ -22,6 +24,14 @@ function App() {
 				if (cards.current.firstCard.url === cards.current.secondCard.url) {
 					cards.current.firstCard = null;
 					cards.current.secondCard = null;
+					cards.current.flipedPairs += 1;
+					console.log(cards.current.flipedPairs);
+					console.log(imgUrls.current.length);
+					if (cards.current.flipedPairs === imgUrls.current.length) {
+						console.log('GG');
+						setGameOver(true);
+					}
+					console.log(moves);
 				} else {
 					setTimeout(() => {
 						cards.current.firstCard.element.classList.remove('flip');
@@ -39,7 +49,7 @@ function App() {
 
 	useEffect(() => {
 		setCardComponents(() => {
-			let components = shuffle(imgUrls).map((url) => {
+			let components = shuffle(imgUrls.current).map((url) => {
 				let id = uniqid();
 				return <Card url={url} key={id} id={id} handleClick={handleClick} />;
 			});
@@ -47,9 +57,20 @@ function App() {
 		});
 	}, [playAgain]);
 
+	useEffect(() => {
+		if (!bestScore || bestScore > moves) {
+			setBestScore(moves);
+		} else {
+			setBestScore(bestScore);
+		}
+		setMoves(0);
+	}, [gameOver]);
+
+	console.log(moves + ' moves!!!');
+
 	return (
 		<div className='App'>
-			<Header moves={moves} bestScore={123} />
+			<Header moves={moves} bestScore={bestScore} />
 			<div className='gameboard'>{cardComponents}</div>
 			<button
 				className='playAgainBtn'

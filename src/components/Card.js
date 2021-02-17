@@ -14,7 +14,6 @@ const Card = (props) => {
 			console.log('Already selected');
 		}
 	};
-
 	return (
 		<div className={`flip-card-container`} onClick={handleClick}>
 			<div className='flip-card'>
