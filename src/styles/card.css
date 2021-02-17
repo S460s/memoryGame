@@ -1,8 +1,14 @@
 .flip-card-container {
-	width: 150px;
-	height: 200px;
+	width: 192px;
+	height: 260px;
 	perspective: 1000px;
 }
+.photo {
+	width: 192px;
+	height: 260px;
+	border-radius: 0.5rem;
+}
+
 .flip-card-container.flip .flip-card {
 	transform: rotateY(180deg);
 }
@@ -33,4 +39,15 @@
 	background-color: #517f4a;
 	color: #fff;
 	transform: rotateY(180deg);
+}
+
+@media only screen and (max-width: 454px) {
+	.flip-card-container {
+		width: 70vw;
+		height: 300px;
+	}
+	.photo {
+		width: 70vw;
+		height: 300px;
+	}
 }

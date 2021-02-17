@@ -13,7 +13,13 @@ const Card = (props) => {
 			onClick={handleClick}>
 			<div className='flip-card'>
 				<div className='flip-card-front'>Front</div>
-				<div className='flip-card-back'>Back</div>
+				<div className='flip-card-back'>
+					<img
+						className='photo'
+						src='https://picsum.photos/seed/picsum/200/300'
+						alt=''
+					/>
+				</div>
 			</div>
 		</div>
 	);
