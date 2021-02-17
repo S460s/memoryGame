@@ -20,9 +20,12 @@ function App() {
 		} else if (!cards.current.secondCard) {
 			cards.current.secondCard = card;
 			console.log(cards.current);
+			setTimeout(() => {
+				cards.current.firstCard.element.classList.remove('flip');
+				cards.current.secondCard.element.classList.remove('flip');
+			}, 1000);
 			return true;
 		}
-		console.log(cards.current);
 		return false;
 	};
 

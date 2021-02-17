@@ -1,18 +1,21 @@
 import '../styles/card.css';
 import React, { useState } from 'react';
 const Card = (props) => {
-	const [fliped, setFliped] = useState(false);
-
 	const handleClick = (e) => {
-		if (props.handleClick(props.id)) {
-			setFliped((prevState) => !prevState);
+		if (
+			props.handleClick({
+				id: props.id,
+				element: e.target.parentElement.parentElement,
+			})
+		) {
+			console.log(e.target.parentElement.parentElement);
+			console.log(e.target);
+			e.target.parentElement.parentElement.classList.add('flip');
 		}
 	};
 
 	return (
-		<div
-			className={`flip-card-container ${fliped ? 'flip' : null}`}
-			onClick={handleClick}>
+		<div className={`flip-card-container`} onClick={handleClick}>
 			<div className='flip-card'>
 				<div className='flip-card-front'>Front</div>
 				<div className='flip-card-back'>
