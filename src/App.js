@@ -10,28 +10,29 @@ function App() {
 	let imgUrls = [
 		'https://picsum.photos/id/1/200/300',
 		'https://picsum.photos/id/2/200/300',
+		'https://picsum.photos/id/3/200/300',
 	];
 
 	const handleClick = (card) => {
-		if (!cards.current.firstCard) {
-			cards.current.firstCard = card;
-			console.log(cards.current);
-			return true;
-		} else if (!cards.current.secondCard) {
-			cards.current.secondCard = card;
-			console.log(cards.current);
-			if (cards.current.firstCard.url === cards.current.secondCard.url) {
-				cards.current.firstCard = null;
-				cards.current.secondCard = null;
-			} else {
-				setTimeout(() => {
-					cards.current.firstCard.element.classList.remove('flip');
-					cards.current.secondCard.element.classList.remove('flip');
+		if (card.element.classList.value === 'flip-card-container') {
+			if (!cards.current.firstCard) {
+				cards.current.firstCard = card;
+				return true;
+			} else if (!cards.current.secondCard) {
+				cards.current.secondCard = card;
+				if (cards.current.firstCard.url === cards.current.secondCard.url) {
 					cards.current.firstCard = null;
 					cards.current.secondCard = null;
-				}, 1000);
+				} else {
+					setTimeout(() => {
+						cards.current.firstCard.element.classList.remove('flip');
+						cards.current.secondCard.element.classList.remove('flip');
+						cards.current.firstCard = null;
+						cards.current.secondCard = null;
+					}, 1000);
+				}
+				return true;
 			}
-			return true;
 		}
 		return false;
 	};

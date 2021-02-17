@@ -1,5 +1,4 @@
 import '../styles/card.css';
-import React, { useState } from 'react';
 const Card = (props) => {
 	const handleClick = (e) => {
 		if (
@@ -10,6 +9,8 @@ const Card = (props) => {
 			})
 		) {
 			e.target.parentElement.parentElement.classList.add('flip');
+		} else {
+			console.log('Already selected');
 		}
 	};
 
