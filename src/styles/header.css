@@ -1,0 +1,18 @@
+header {
+	background-color: #ccc;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.title {
+	margin: 10px 0px 15px 0px;
+}
+
+.scoreboard {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.scoreboard > p {
+	margin: 0 10px 15px 10px;
+}
