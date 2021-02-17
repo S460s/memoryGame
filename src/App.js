@@ -28,8 +28,9 @@ function App() {
 					console.log(cards.current.flipedPairs);
 					console.log(imgUrls.current.length);
 					if (cards.current.flipedPairs === imgUrls.current.length) {
+						cards.current.flipedPairs = 0;
 						console.log('GG');
-						setGameOver(true);
+						setGameOver((prevState) => !prevState);
 					}
 					console.log(moves);
 				} else {
