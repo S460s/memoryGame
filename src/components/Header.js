@@ -5,8 +5,8 @@ const Header = (props) => {
 		<header>
 			<h1 className='title'>Memory Game</h1>
 			<div className='scoreboard'>
-				<p>Score: default0</p>
-				<p>High Score: default0</p>
+				<p>Moves: {props.moves}</p>
+				<p>High Score: {props.bestScore}</p>
 			</div>
 		</header>
 	);

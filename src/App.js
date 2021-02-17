@@ -3,15 +3,13 @@ import Header from './components/Header';
 import shuffle from './helperFunctions';
 import uniqid from 'uniqid';
 import './styles/app.css';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 function App() {
-	let cards = useRef({ firstCard: null, secondCard: null });
+	let cards = useRef({ firstCard: null, secondCard: null, flipedPairs: 0 });
 
-	let imgUrls = [
-		'https://picsum.photos/id/1/200/300',
-		'https://picsum.photos/id/2/200/300',
-		'https://picsum.photos/id/3/200/300',
-	];
+	const [moves, setMoves] = useState(0);
+	const [cardComponents, setCardComponents] = useState([]);
+	let imgUrls = [1, 2, 3];
 
 	const handleClick = (card) => {
 		if (card.element.classList.value === 'flip-card-container') {
@@ -31,20 +29,26 @@ function App() {
 						cards.current.secondCard = null;
 					}, 1000);
 				}
+				setMoves((prevMoves) => prevMoves + 1);
 				return true;
 			}
 		}
 		return false;
 	};
 
-	const cardComponents = shuffle(imgUrls).map((url) => {
-		let id = uniqid();
-		return <Card url={url} key={id} id={id} handleClick={handleClick} />;
-	});
+	useEffect(() => {
+		setCardComponents(() => {
+			let components = shuffle(imgUrls).map((url) => {
+				let id = uniqid();
+				return <Card url={url} key={id} id={id} handleClick={handleClick} />;
+			});
+			return components;
+		});
+	}, []);
 
 	return (
 		<div className='App'>
-			<Header />
+			<Header moves={moves} bestScore={123} />
 			<div className='gameboard'>{cardComponents}</div>
 		</div>
 	);

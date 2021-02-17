@@ -1,14 +1,15 @@
 import '../styles/card.css';
 const Card = (props) => {
 	const handleClick = (e) => {
+		let container = e.target.parentElement.parentElement;
 		if (
 			props.handleClick({
 				id: props.id,
-				element: e.target.parentElement.parentElement,
+				element: container,
 				url: props.url,
 			})
 		) {
-			e.target.parentElement.parentElement.classList.add('flip');
+			container.classList.add('flip');
 		} else {
 			console.log('Already selected');
 		}
@@ -19,7 +20,7 @@ const Card = (props) => {
 			<div className='flip-card'>
 				<div className='flip-card-front'>Front</div>
 				<div className='flip-card-back'>
-					<img className='photo' src={props.url} alt='' />
+					<p>{props.url}</p>
 				</div>
 			</div>
 		</div>
