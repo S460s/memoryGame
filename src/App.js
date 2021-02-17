@@ -9,6 +9,7 @@ function App() {
 
 	const [moves, setMoves] = useState(0);
 	const [cardComponents, setCardComponents] = useState([]);
+	let [playAgain, setPlayAgain] = useState(true);
 	let imgUrls = [1, 2, 3];
 
 	const handleClick = (card) => {
@@ -44,12 +45,19 @@ function App() {
 			});
 			return components;
 		});
-	}, []);
+	}, [playAgain]);
 
 	return (
 		<div className='App'>
 			<Header moves={moves} bestScore={123} />
 			<div className='gameboard'>{cardComponents}</div>
+			<button
+				className='playAgainBtn'
+				onClick={() => {
+					setPlayAgain((prevState) => !prevState);
+				}}>
+				Play Again
+			</button>
 		</div>
 	);
 }

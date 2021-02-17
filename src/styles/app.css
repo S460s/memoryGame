@@ -5,6 +5,13 @@
 	grid-template-columns: repeat(auto-fit, minmax(192px, 1fr));
 }
 
+.playAgainBtn {
+	display: block;
+	margin: auto;
+	width: 300px;
+	height: 50px;
+}
+
 @media only screen and (max-width: 600px) {
 	.gameboard {
 		justify-items: center;
