@@ -1,3 +1,15 @@
+@keyframes cardEntrance {
+	from {
+		transform: scale(0.3);
+		filter: hue-rotate(180deg);
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+		filter: hue-rotate(0deg);
+	}
+}
 .flip-card-container {
 	width: 192px;
 	height: 260px;
@@ -32,11 +44,12 @@
 	border-radius: 0.5rem;
 }
 .flip-card-front {
-	background-color: #333;
+	background-color: rgb(69, 131, 97);
 	color: #fff;
+	animation: cardEntrance 1s ease-out;
+	animation-fill-mode: backwards;
 }
 .flip-card-back {
-	background-color: #517f4a;
 	color: #fff;
 	transform: rotateY(180deg);
 }
