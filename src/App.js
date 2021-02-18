@@ -12,13 +12,17 @@ function App() {
 	const [playAgain, setPlayAgain] = useState(true);
 	const [bestScore, setBestScore] = useState(null);
 	const [gameOver, setGameOver] = useState(false);
-	let imgUrls = useRef(['1', '2']);
+	let imgUrls = useRef([
+		'https://picsum.photos/id/1021/200/300',
+		'https://picsum.photos/id/1012/200/300',
+		'https://picsum.photos/id/922/200/300',
+	]);
 
 	const handleClick = (card) => {
 		if (card.element.classList.value === 'flip-card-container') {
 			if (!cards.current.firstCard) {
 				cards.current.firstCard = card;
-				return true;
+				card.element.classList.add('flip');
 			} else if (!cards.current.secondCard) {
 				cards.current.secondCard = card;
 				if (cards.current.firstCard.url === cards.current.secondCard.url) {
@@ -39,20 +43,21 @@ function App() {
 						cards.current.secondCard.element.classList.remove('flip');
 						cards.current.firstCard = null;
 						cards.current.secondCard = null;
-					}, 1000);
+					}, 1500);
 				}
 				setMoves((prevMoves) => prevMoves + 1);
-				return true;
+				card.element.classList.add('flip');
 			}
+		} else {
+			console.log('Already fliped');
 		}
-		return false;
 	};
 
 	useEffect(() => {
 		setCardComponents(() => {
 			let components = shuffle(imgUrls.current).map((url) => {
 				let id = uniqid();
-				return <Card url={url} key={id} id={id} handleClick={handleClick} />;
+				return <Card url={url} key={id} handleClick={handleClick} />;
 			});
 			return components;
 		});
