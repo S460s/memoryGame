@@ -12,6 +12,11 @@
 	height: 50px;
 }
 
+.winMsg {
+	text-align: center;
+	font-size: larger;
+}
+
 @media only screen and (max-width: 600px) {
 	.gameboard {
 		justify-items: center;

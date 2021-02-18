@@ -4,14 +4,14 @@ import shuffle from './helperFunctions';
 import uniqid from 'uniqid';
 import './styles/app.css';
 import { useEffect, useRef, useState } from 'react';
+import WinMsg from './components/WinMsg';
 function App() {
 	let cards = useRef({ firstCard: null, secondCard: null, flipedPairs: 0 });
-
 	const [moves, setMoves] = useState(0);
 	const [cardComponents, setCardComponents] = useState([]);
-	const [playAgain, setPlayAgain] = useState(true);
-	const [bestScore, setBestScore] = useState(null);
+	const [playAgain, setPlayAgain] = useState(false);
 	const [gameOver, setGameOver] = useState(false);
+	const [bestScore, setBestScore] = useState(null);
 	let imgUrls = useRef([
 		'https://picsum.photos/id/1021/200/300',
 		'https://picsum.photos/id/1012/200/300',
@@ -36,7 +36,6 @@ function App() {
 						console.log('GG');
 						setGameOver((prevState) => !prevState);
 					}
-					console.log(moves);
 				} else {
 					setTimeout(() => {
 						cards.current.firstCard.element.classList.remove('flip');
@@ -54,6 +53,13 @@ function App() {
 	};
 
 	useEffect(() => {
+		if (!bestScore || bestScore > moves) {
+			setBestScore(moves);
+		} else {
+			setBestScore(bestScore);
+		}
+		setMoves(0);
+		setGameOver(false);
 		setCardComponents(() => {
 			let components = shuffle(imgUrls.current).map((url) => {
 				let id = uniqid();
@@ -63,28 +69,15 @@ function App() {
 		});
 	}, [playAgain]);
 
-	useEffect(() => {
-		if (!bestScore || bestScore > moves) {
-			setBestScore(moves);
-		} else {
-			setBestScore(bestScore);
-		}
-		setMoves(0);
-	}, [gameOver]);
-
-	console.log(moves + ' moves!!!');
+	let winMsg = gameOver ? (
+		<WinMsg flag={playAgain} setFlag={setPlayAgain} moves={moves} />
+	) : null;
 
 	return (
 		<div className='App'>
 			<Header moves={moves} bestScore={bestScore} />
 			<div className='gameboard'>{cardComponents}</div>
-			<button
-				className='playAgainBtn'
-				onClick={() => {
-					setPlayAgain((prevState) => !prevState);
-				}}>
-				Play Again
-			</button>
+			{winMsg}
 		</div>
 	);
 }
