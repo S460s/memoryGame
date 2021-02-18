@@ -13,9 +13,14 @@ function App() {
 	const [gameOver, setGameOver] = useState(false);
 	const [bestScore, setBestScore] = useState(null);
 	let imgUrls = useRef([
-		'https://picsum.photos/id/1021/200/300',
-		'https://picsum.photos/id/1012/200/300',
-		'https://picsum.photos/id/922/200/300',
+		'https://picsum.photos/id/121/200/300',
+		'https://picsum.photos/id/112/200/300',
+		'https://picsum.photos/id/132/200/300',
+		'https://picsum.photos/id/123/200/300',
+		'https://picsum.photos/id/324/200/300',
+		'https://picsum.photos/id/524/200/300',
+		'https://picsum.photos/id/824/200/300',
+		'https://picsum.photos/id/24/200/300',
 	]);
 
 	const handleClick = (card) => {
@@ -76,8 +81,8 @@ function App() {
 	return (
 		<div className='App'>
 			<Header moves={moves} bestScore={bestScore} />
-			<div className='gameboard'>{cardComponents}</div>
 			{winMsg}
+			<div className='gameboard'>{cardComponents}</div>
 		</div>
 	);
 }

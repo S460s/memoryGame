@@ -10,6 +10,7 @@
 		filter: hue-rotate(0deg);
 	}
 }
+
 .flip-card-container {
 	width: 192px;
 	height: 260px;
@@ -44,13 +45,13 @@
 	border-radius: 0.5rem;
 }
 .flip-card-front {
-	background-color: rgb(69, 131, 97);
-	color: #fff;
+	background-color: #379683;
+	color: #edf5e1;
 	animation: cardEntrance 1s ease-out;
 	animation-fill-mode: backwards;
 }
+
 .flip-card-back {
-	color: #fff;
 	transform: rotateY(180deg);
 }
 

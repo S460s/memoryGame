@@ -1,13 +1,18 @@
 header {
-	background-color: #ccc;
+	background-color: #5cdb95;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 }
 .title {
 	margin: 10px 0px 15px 0px;
+	color: #edf5e1;
+	font-weight: 800;
 }
-
+.score {
+	color: #edf5e1;
+	font-weight: 800;
+}
 .scoreboard {
 	width: 100%;
 	display: flex;
