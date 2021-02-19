@@ -12,7 +12,7 @@ function App() {
 	const [playAgain, setPlayAgain] = useState(false);
 	const [gameOver, setGameOver] = useState(false);
 	const [bestScore, setBestScore] = useState(null);
-	let imgUrls = useRef([
+	let imgUrls = [
 		'https://picsum.photos/id/121/200/300',
 		'https://picsum.photos/id/112/200/300',
 		'https://picsum.photos/id/132/200/300',
@@ -21,7 +21,7 @@ function App() {
 		'https://picsum.photos/id/524/200/300',
 		'https://picsum.photos/id/824/200/300',
 		'https://picsum.photos/id/24/200/300',
-	]);
+	];
 
 	const handleClick = (card) => {
 		if (card.element.classList.value === 'flip-card-container') {
@@ -66,7 +66,7 @@ function App() {
 		setMoves(0);
 		setGameOver(false);
 		setCardComponents(() => {
-			let components = shuffle(imgUrls.current).map((url) => {
+			let components = shuffle(imgUrls).map((url) => {
 				let id = uniqid();
 				return <Card url={url} key={id} handleClick={handleClick} />;
 			});
