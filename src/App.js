@@ -12,7 +12,7 @@ function App() {
 	const [playAgain, setPlayAgain] = useState(false);
 	const [gameOver, setGameOver] = useState(false);
 	const [bestScore, setBestScore] = useState(null);
-	let imgUrls = [
+	const imgUrls = [
 		'https://picsum.photos/id/121/200/300',
 		'https://picsum.photos/id/112/200/300',
 		'https://picsum.photos/id/132/200/300',
