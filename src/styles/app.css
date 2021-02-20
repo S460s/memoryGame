@@ -24,6 +24,7 @@
 	border: none;
 	filter: hue-rotate(180deg);
 	animation: playAgain 3s infinite;
+	cursor: pointer;
 }
 
 .winDiv {

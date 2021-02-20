@@ -49,6 +49,7 @@
 	color: #edf5e1;
 	animation: cardEntrance 1s ease-out;
 	animation-fill-mode: backwards;
+	cursor: pointer;
 }
 
 .flip-card-back {
